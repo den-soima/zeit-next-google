@@ -7,7 +7,7 @@ const pool = new Pool({
     port: 5432,
 })
 
-export default function handle(req, res) {
+export default (req, res) => {
     pool.query('SELECT * FROM testdata', (error, result) => {
         if (error){
             throw error
