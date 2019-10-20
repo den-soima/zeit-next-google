@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "micro": "^9.3.4",
     "next": "9.1.1",
     "node-pre-gyp": "^0.13.0",
     "pg": "^7.12.1",

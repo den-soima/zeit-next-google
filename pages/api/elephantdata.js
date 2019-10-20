@@ -1,15 +1,15 @@
-const { Pool } = require('pg');
+const {Pool} = require('pg');
 const pool = new Pool({
-    user: 'postgres',
-    host: '35.246.140.248',
-    database: 'googletest',
-    password: 'user',
+    user: 'eydoewva',
+    host: 'dumbo.db.elephantsql.com',
+    database: 'eydoewva',
+    password: 'cC-HyNcrlOa4nWa9kstq2Zi7oCfHKvbz',
     port: 5432,
-})
+});
 
 export default (req, res) => {
     pool.query('SELECT * FROM testdata', (error, result) => {
-        if (error){
+        if (error) {
             throw error
         }
         res.status(200).json({
