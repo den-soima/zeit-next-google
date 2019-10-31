@@ -1,43 +1,65 @@
 import React from 'react'
-import Link from "next/link";
+import Header from "../components/Header";
+import Body from "../components/Body";
+import {NodesContext} from "./nodes-context";
 
-const Home = () => (
-  <div>
-      <ul>
-          <li>
-              <h3>Get data from Google Cloud DB Postgres via public IP.</h3>
-              <Link href='/api/googledata'>
-                  <a>Go to api/googledata</a>
-              </Link>
-              <pre>
-                  user: 'postgres',<br />
-                  host: '35.246.140.248',<br />
-                  database: 'googletest',<br />
-                  password: 'user',<br />
-                  port: 5432,<br />
-              </pre>
-          </li>
-         <li>
-             <h3>Get data from Elephant SQL via Hostname.</h3>
-             <Link href='/api/elephantdata'>
-                 <a>Go to api/elephantdata</a>
-             </Link>
-             <pre>
-                 user: 'eydoewva',<br />
-                 host: 'dumbo.db.elephantsql.com',<br />
-                 database: 'eydoewva',<br />
-                 password: 'cC-HyNcrlOa4nWa9kstq2Zi7oCfHKvbz',<br />
-                 port: 5432,<br />
-             </pre>
-         </li>
-      </ul>
-      <style jsx>{`
-        pre {
-            background-color: #EAEAEA;
-        }
-      
-      `}</style>
-  </div>
-)
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
 
-export default Home
+        this.addNode = (node) => {
+            this.setState(state => {
+                return {
+                    nodes: state.nodes.push(node)
+                }
+            })
+        };
+
+        this.updateConnection = (id, propertyName, propertyValue) => {
+            this.setState(state => {
+                return {
+                    nodes: [...state.nodes.map(node => {
+                        if (node.id === id) {
+                            node.connection[propertyName] = propertyValue
+                        }
+                        return node
+                    })]
+                }
+            })
+        };
+
+        this.getDbNodes = () => {
+            fetch('http://localhost:3000/api/dbnodes')
+                .then(response => response.json())
+                .then(data => this.setState({
+                    zeit: data.zeitlocation,
+                    nodes: data.nodes,
+                }));
+        };
+
+        this.state = {
+            zeit: '',
+            nodes: [],
+            bestNode: '',
+            bestTime: '',
+            addNode: this.addNode,
+            updateConnection: this.updateConnection,
+            reloadData: this.getDbNodes,
+        };
+    }
+
+    componentDidMount() {
+        this.getDbNodes();
+    }
+
+    render() {
+        return (
+            <NodesContext.Provider value={this.state}>
+                <Header/>
+                <Body/>
+            </NodesContext.Provider>
+        )
+    }
+}
+
+export default Home;

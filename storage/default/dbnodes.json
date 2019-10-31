@@ -1,0 +1,33 @@
+{
+  "zeitlocation": "AWS eu-west-2 (London, UK)",
+  "nodes": [
+    {
+      "id": "google",
+      "name": "Google cloud SQL",
+      "servers": "Google",
+      "dblocation": "europe-west3-b",      
+      "connection": {
+        "user": "postgres",
+        "host": "35.246.140.248",
+        "database": "googletest",
+        "password": "user",
+        "port": 5432,
+        "query": "SELECT * FROM testdata"
+      }
+    },
+    {
+      "id": "elephant",
+      "name": "Elephant SQL",
+      "servers": "Azure",
+      "dblocation": "west europa",      
+      "connection": {
+        "user": "eydoewva",
+        "host": "dumbo.db.elephantsql.com",
+        "database": "eydoewva",
+        "password": "cC-HyNcrlOa4nWa9kstq2Zi7oCfHKvbz",
+        "port": 5432,
+        "query": "SELECT * FROM testdata"
+      }
+    }    
+  ]
+}
