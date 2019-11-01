@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from "styled-components";
-import {NodesContext} from "../../../pages/nodes-context";
 import Stopwatch from "./run/Stopwatch";
 
 class Run extends React.Component {
@@ -8,8 +7,6 @@ class Run extends React.Component {
         super(props);
         this.onRunClick = this.onRunClick.bind(this);
     }
-
-    static contextType = NodesContext;
 
     onRunClick() {
         const {id, connection} = this.props.node;
@@ -29,23 +26,31 @@ class Run extends React.Component {
     render() {        
         return (
             <Wrapper>
-                <ButtonStyled onClick={this.onRunClick}>
-                    RUN
-                </ButtonStyled>
+                <StyledButton onClick={this.onRunClick}>
+                    RUN Query
+                </StyledButton>
                 <Stopwatch/>
             </Wrapper>                
         )
     }
 }
 const Wrapper = styled.div`
- border: 1px solid black;
+    box-sizing: border-box;
+    border: 1px solid black;
+    height: 100%;
+    width: 120px;
+    float: left;
+    margin-right: 2px;
 `;
 
-const ButtonStyled = styled.button`
-  text-align: center;
-  margin: 2px 0;
-  width: 146px;
+const StyledButton = styled.button`
+  display: block;
+  margin: 5px auto;
+  width: 110px;
   height: 30px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
 `;
 
 export default Run;

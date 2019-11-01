@@ -26,10 +26,20 @@ export class DbRequest {
         client.query(this.query, (error, result) => {
             if (error) {
                 console.log(error);
-                throw error
+                result = {
+                    rows: {
+                        error: {
+                            type: 'Run query',
+                            message : 'Error, please, check settings',
+                            query: this.query,
+                        }
+                    }
+                }
+                
             }
-            const end = process.hrtime(start);
-            callBack(result, { seconds: end[0], nanoseconds: end[1]});
+                const end = process.hrtime(start);
+                callBack(result, {seconds: end[0], nanoseconds: end[1]});
+            
             client.end();
         });
     }

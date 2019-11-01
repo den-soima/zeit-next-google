@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const Edit = (props) => (
-    <ButtonStyled onClick={props.onClick} edit={props.edit}>
-        EDIT
+const Edit = ({onClick, edit}) => (
+    <ButtonStyled onClick={onClick} edit={edit}>
+        EDIT coonnection settings
     </ButtonStyled>
 );
 
 const ButtonStyled = styled.button`
-  width: 300px;
+  margin-left: 47px;
+  width: 244px;
   border: 1px solid black; 
-  background-color: ${props => props.edit ? 'lime' : 'white'};
+  border-radius: 5px;
+  background-color: ${props => props.edit ? 'lightcoral' : 'white'};
 `;
 
 export default Edit;

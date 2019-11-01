@@ -10,15 +10,26 @@ const Response = ({data})=>(
 );
 
 const Wrapper = styled.div`
+  box-sizing: border-box;
   border: 1px solid black;
+  width: 400px;  
+  height: 100%;
   float: left;
-  width: 650px;  
+  background-color: aliceblue;
 `;
 
 const StyledPre = styled.pre`
- overflow-y: auto;
+ box-sizing: border-box;
+ overflow: auto !important;
  scrollbar-base-color: gold;
- height: 100px
+ height: auto;
+ max-height: 150px;
+ margin: 5px;
+ padding: 0 10px;
+
+word-break: normal !important;
+word-wrap: normal !important;
+white-space: pre !important;
 `;
 
 export default Response;

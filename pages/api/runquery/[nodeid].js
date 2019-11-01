@@ -9,7 +9,7 @@ export default (request, response) => {
         const dbRequest = new DbRequest(connection);
         dbRequest.run((result, time) => {
             response.setHeader('Content-Type', 'application/json');
-            response.statusCode = 200;
+            response.statusCode = result.rows.hasOwnProperty('error')? 500:  200;
             response.end(JSON.stringify({
                 node: nodeid,
                 result: result.rows,

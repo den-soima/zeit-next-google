@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from "styled-components";
 
-const Title = ({title}) => (
+const Title = ({title, dblocation}) => (
     <Wrapper>
-        {title}
+        {title} (location: {dblocation})
     </Wrapper>
 );
 
 const Wrapper = styled.div`
+  width: 400px;
   float: left;
 `;
 

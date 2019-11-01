@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DbNode from "./DbNode";
-import {NodesContext} from "../pages/nodes-context";
+import {NodesContext} from "../modules/nodes-context";
 
 class Body extends React.Component {
     static contextType = NodesContext;
@@ -9,13 +9,19 @@ class Body extends React.Component {
     render() {
         const { nodes } = this.context;
         return (
-            <div>
+            <StyledBody>
                 <ul>
                     {nodes.map((node) => <li key={node.id}><DbNode node={node}/></li>)}                    
                 </ul>
-            </div>
+            </StyledBody>
         )
     }
 }
+
+const StyledBody = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+`;
 
 export default Body;

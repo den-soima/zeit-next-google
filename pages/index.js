@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from "../components/Header";
 import Body from "../components/Body";
-import {NodesContext} from "./nodes-context";
+import {NodesContext} from "../modules/nodes-context";
 
 class Home extends React.Component {
     constructor(props) {
@@ -37,14 +37,24 @@ class Home extends React.Component {
                 }));
         };
 
+        this.calculateBest = (best) => {
+            this.setState({best: best})
+        };
+
         this.state = {
             zeit: '',
             nodes: [],
-            bestNode: '',
-            bestTime: '',
+            best: {
+                nodeId: '',
+                time: {
+                    seconds: 0,
+                    nanoseconds: 0,
+                }
+            },
             addNode: this.addNode,
             updateConnection: this.updateConnection,
             reloadData: this.getDbNodes,
+            calculateBest: this.calculateBest,
         };
     }
 
@@ -53,9 +63,10 @@ class Home extends React.Component {
     }
 
     render() {
+        const {zeit, best} = this.state;
         return (
             <NodesContext.Provider value={this.state}>
-                <Header/>
+                <Header zeit={zeit} best={best}/>
                 <Body/>
             </NodesContext.Provider>
         )
