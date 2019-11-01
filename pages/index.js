@@ -29,7 +29,7 @@ class Home extends React.Component {
         };
 
         this.getDbNodes = () => {
-            fetch('http://localhost:3000/api/dbnodes')
+            fetch('/api/dbnodes')
                 .then(response => response.json())
                 .then(data => this.setState({
                     zeit: data.zeitlocation,

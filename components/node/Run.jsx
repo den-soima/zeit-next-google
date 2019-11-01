@@ -10,7 +10,7 @@ class Run extends React.Component {
 
     onRunClick() {
         const {id, connection} = this.props.node;
-        fetch(`http://localhost:3000/api/runquery/${id}`, {
+        fetch(`/api/runquery/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
