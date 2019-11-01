@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
 import Time from "./Time";
-import ProcessTime from "../../../../modules/time-formatter";
 
 class TimeTable extends React.Component {
     render() {
@@ -36,14 +35,14 @@ const Attempts = styled.div`
 `;
 
 export const StyledValue = styled.div`
-text-align: center;
+    text-align: center;
 `;
 
 export const StyledName = styled.div`
-font-family: "Courier New";
-font-size: 0.65em;
-color: gray;
-margin-left: 0.25em;
+    font-family: "Courier New";
+    font-size: 0.65em;
+    color: gray;
+    margin-left: 5px;
 `;
 
 export default TimeTable;
