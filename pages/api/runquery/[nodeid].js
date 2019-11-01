@@ -7,9 +7,9 @@ export default (request, response) => {
             body: {connection}
         } = request;
         const dbRequest = new DbRequest(connection);
-        dbRequest.run((result, time) => {
+        dbRequest.run((error, result, time) => {
             response.setHeader('Content-Type', 'application/json');
-            response.statusCode = result.rows.hasOwnProperty('error')? 500:  200;
+            response.statusCode = !error ? 200 : 500;
             response.end(JSON.stringify({
                 node: nodeid,
                 result: result.rows,

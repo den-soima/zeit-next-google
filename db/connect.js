@@ -30,16 +30,16 @@ export class DbRequest {
                     rows: {
                         error: {
                             type: 'Run query',
-                            message : 'Error, please, check settings',
+                            message: 'Error, please, check settings',
                             query: this.query,
                         }
                     }
                 }
                 
             }
-                const end = process.hrtime(start);
-                callBack(result, {seconds: end[0], nanoseconds: end[1]});
-            
+            const end = process.hrtime(start);
+            callBack(error, result, {seconds: end[0], nanoseconds: end[1]});
+
             client.end();
         });
     }

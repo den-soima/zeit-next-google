@@ -22,7 +22,7 @@ class Connection extends React.Component {
 
     onFormSubmit() {
         let {nodeId, connection} = this.props;
-        fetch('http://localhost:3000/api/dbnodes', {
+        fetch('/api/dbnodes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
