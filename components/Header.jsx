@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Header = ({zeit, best}) => (
     <Wrapper>
         <StyledButton>Add node (not working..)</StyledButton>
-        <StyledDiv>Zeit location: {zeit}</StyledDiv>
+        <StyledDiv>Zeit location [regions: "lhr1", "cdg1"]: {zeit}</StyledDiv>
         <StyledDiv>Best node:</StyledDiv>
         <StyledValue>{best.nodeId}</StyledValue>
         <StyledDiv>Average time:</StyledDiv>
