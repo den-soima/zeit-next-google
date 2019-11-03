@@ -24,8 +24,8 @@ export class DbRequest {
         const start = process.hrtime();
         client.connect();
         client.query(this.query, (error, result) => {
-            if (error) {
-                console.log(error);
+            console.log(error);
+            if (error) {                
                 result = {
                     rows: {
                         error: {
@@ -38,6 +38,8 @@ export class DbRequest {
                 
             }
             const end = process.hrtime(start);
+            console.log('Error', error);
+            console.log(result);
             callBack(error, result, {seconds: end[0], nanoseconds: end[1]});
 
             client.end();

@@ -1,18 +1,20 @@
 
 const path = require('path');
-const DbNodes = require('./dbnodes');
+const dbnodes = require('./dbnodes');
 const fs = require('fs');
 
 export function EditNode(id, connection, callback) {
-    DbNodes.nodes.forEach(node => {
+    dbnodes.nodes.forEach(node => {
         if (node.id === id) {
             node.connection = connection
         }
     });
     
-    let json = JSON.stringify(DbNodes, null, 1);
+    let json = JSON.stringify(dbnodes, null, 1);
     
-    fs.writeFile('./storage/dbnodes.json', json, 'utf8', callback);
+    fs.writeFile('./storage/dbnodes.json', json, 'utf8', (err)=>{
+        callback(err)
+    });
 }
 
 export function AddNode(node) {
